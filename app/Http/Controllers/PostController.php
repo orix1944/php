@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
+
 use App\Post;
 
 class PostController extends Controller
@@ -30,7 +32,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create', [
+            // 'post' => $post,
+            // 'search_result' => $search_result
+        ]);
     }
 
     /**
@@ -39,9 +44,14 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        $post = new Post;
+        $input = $request->only($post->getFillable());
+
+        $post = $post->create($input);
+        return redirect('/');
+
     }
 
     /**
