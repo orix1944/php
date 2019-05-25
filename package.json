@@ -23,9 +23,7 @@
         "sass-loader": "^7.1.0",
         "vue": "^2.5.17"
     },
-          "name": "php",
-          "description": "a really cool app",
-          "version": "1.0.0",
+
           "engines": {
             "node": "12.2.0"
           }
