@@ -21,11 +21,16 @@
                     </ul>
                 </div>
             @endif
-             <form action="{{ route('posts.store') }}" method="POST">
+             <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                  {{ csrf_field() }}
                <div class="form-group">
                  <label for="exampleInputEmail1">title</label>
                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter title" name="title">
+               <div class="form-group">
+                 <label for="exampleFormControlFile1">Example file input</label>
+                 <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+               </div>
+
                </div>
                  <div class="form-group">
                      <label for="exampleFormControlSelect1">category</label>
