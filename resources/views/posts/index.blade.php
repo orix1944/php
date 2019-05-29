@@ -12,7 +12,7 @@
     <br/>
     <div class="row justify-content-center">
                         <div class="col-12 col-md-10 col-lg-8"style="padding-bottom: 22px;">
-                            <form class="card card-sm" action="{{ route('posts.search') }}" method="POST">
+                            <form class="card card-sm" action="{{ route('posts.search') }}" method="GET">
                                 {{ csrf_field() }}
                                 <div class="card-body row no-gutters align-items-center" >
                                     <div class="col-auto" style="padding: 10px 10px 0px 0px;">
@@ -63,7 +63,9 @@
         </div>
     @endforeach
 @if(isset($category_id))
-    {{ $users->appends(['category_id' => $category_id])->links() }}
+    {{ $posts->appends(['category_id' => $category_id])->links() }}
+@elseif(isset($search_query)
+    {{ $posts->appends(['search' => $search_query])->links() }}
 @else
     {{ $posts->links() }}
 @endif
