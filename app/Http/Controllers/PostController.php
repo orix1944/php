@@ -61,7 +61,7 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        if($request->file('image')->isvalid()) {
+
             $post = new Post;
             // $input = $request->only($post->getFillable());
 
@@ -69,10 +69,11 @@ class PostController extends Controller
             $post->category_id = $request->category_id;
             $post->content = $request->content;
             $post->title = $request->title;
-
+            if($request->file('image')) {
             $filename = $request->file('image')->store('public/image');
 
             $post->image = basename($filename);
+
 
             // if(!isset($input['image'])) {
             //     array_set($input, 'image', basename($filename));
@@ -131,11 +132,19 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($post_id)
     {
-        //
+        $post = Post::findOrFail($post_id);
+
+        \DB::transaction(function () use ($post) {
+            $post->comments()->delete();
+            $post->delete();
+        });
+
+        return redirect('/');
     }
-    public function search(Request $request)
+
+        public function search(Request $request)
     {
         $posts = Post::where('title', 'like', "%{$request->search}%")
                        ->orwhere('content', 'like', "%{$request->search}%")
