@@ -17,17 +17,15 @@
             <h5 class="card-title">
 
                 カテゴリー:{{ $post->category->category_name }}</h5>
-
-            <form action="{{ route('posts.destroy', ['post' => $post->id]) }}" method="post"
-            style="display: inline-block;"
-            onsubmit="return confirm('投稿を削除しますか？');">
-            {{ csrf_field() }}
-            {{ method_field('DELETE') }}
-                <button type="submit" class="remove-botton">
-                    <i class="far fa-trash-alt"></i> 削除
-                </button>
-            </form>
-
+            <div class="remove-botton">
+                <form action="{{ route('posts.destroy', ['post' => $post->id]) }}" method="post" style="display: inline-block;" onsubmit="return confirm('投稿を削除しますか？');">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                    <button type="submit" class="">
+                        <i class="far fa-trash-alt"></i> 削除
+                    </button>
+                </form>
+            </div>
 
 
 
