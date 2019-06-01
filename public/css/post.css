@@ -1,5 +1,5 @@
 .remove-botton {
-    border-radius: 2px;
-    margin-left: 380px;
-
+    /*border-radius: 2px;
+    margin-left: 380px;*/
+    float: right;
 }
