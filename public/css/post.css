@@ -3,3 +3,15 @@
     margin-left: 380px;*/
     float: right;
 }
+
+.align-items-center {
+    background-color: #CCFF99;
+}
+
+.bg-green {
+    background-color: #CCFF99;
+}
+
+.py-4 {
+    background-color: #28a745;
+}
