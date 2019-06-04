@@ -32,9 +32,10 @@
             <h5 class="card-title">
 
                 投稿者:{{ $post->user->name }}</h5>
+
             <h5 class="card-title">{{ $post->title }}</h5>
             <p class="card-text">{{ $post->contenbt }}</p>
-            <img src="{{ asset('storage/image'.$post->image) }}">
+            <img src="{{ asset('storage/image/'.$post->image) }}">
           </div>
         </div>
 
