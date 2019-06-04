@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
-
+use Illuminate\Support\Facades\Auth;
 use App\Post;
 
 class PostController extends Controller
@@ -95,9 +95,10 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $post->load('category', 'user', 'comments.user');
-
+        $id = Auth::id();
         return view('posts.show', [
             'post' => $post,
+            'id' => $id,
             // 'search_result' => $search_result
         ]);
     }

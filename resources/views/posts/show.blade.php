@@ -17,6 +17,10 @@
             <h5 class="card-title">
 
                 カテゴリー:{{ $post->category->category_name }}</h5>
+
+
+    @if ($id === $post->user_id)
+
             <div class="remove-botton">
                 <form action="{{ route('posts.destroy', ['post' => $post->id]) }}" method="post" style="display: inline-block;" onsubmit="return confirm('投稿を削除しますか？');">
                 {{ csrf_field() }}
@@ -26,7 +30,7 @@
                     </button>
                 </form>
             </div>
-
+    @endif
 
 
             <h5 class="card-title">
