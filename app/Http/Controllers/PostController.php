@@ -99,7 +99,6 @@ class PostController extends Controller
         return view('posts.show', [
             'post' => $post,
             'id' => $id,
-            // 'search_result' => $search_result
         ]);
     }
 
@@ -149,7 +148,7 @@ class PostController extends Controller
         $posts = Post::where('title', 'like', "%{$request->search}%")
                        ->orwhere('content', 'like', "%{$request->search}%")
                        ->paginate(5);
-        // dd($posts);
+
         $search_result = $request->search.'の検索結果'.$posts->total().'件';
         return view('posts.index', [
             'posts' => $posts,
